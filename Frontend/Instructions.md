@@ -1,24 +1,16 @@
 To run the project, follow the steps:
 
-1> Go to the path CodeChallenge/Frontend
+1> In the current path CodeChallenge/Frontend
 
 2> Run code in terminal
 
 ```bash
-cd Frontend
 npm install
 ```
 
-3> Go to the path CodeChallenge/Backend and execute run the server.
+> Execute in terminal in order to run.
 
 ```bash
-
-```
-
-4> Go to the path CodeChallenge/Frontend and execute in terminal
-
-```bash
-cd Frontend
 npm run dev
 ```
 

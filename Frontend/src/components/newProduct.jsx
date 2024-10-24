@@ -5,7 +5,7 @@ import { PRODUCT_TYPE } from '../../constants/constants';
 import '../styles/newProduct.scss';
 
 export function NewProduct({ productToEdit = null, onClose }) {
-    const { insertProduct, updateProduct } = useContext(ProductContext);
+    const { products, insertProduct, updateProduct } = useContext(ProductContext);
     const prefix = productToEdit ? "Update" : "Create";
     const [formData, setFormData] = useState({
         name: productToEdit?.name || '',
@@ -36,6 +36,13 @@ export function NewProduct({ productToEdit = null, onClose }) {
         event.preventDefault();
 
         const { name, code, productType, tax, downloadLink } = formData;
+
+        const existingCodeProduct = products.find(product => product.code === code);
+    
+        if (existingCodeProduct) {
+            alert(`Code: ${code} Already Exists. Specify another`);
+            return; 
+        }
 
         let productData = {
             name,

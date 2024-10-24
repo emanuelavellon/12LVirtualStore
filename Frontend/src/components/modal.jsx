@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/modal.scss'
 
-export function Modal ({ isOpen, onClose, _height="450px", children }) {
+export function Modal ({ isOpen, onClose, _height="370px", children }) {
     if (!isOpen) return null; 
 
     return (

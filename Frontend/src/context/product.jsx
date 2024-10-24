@@ -3,7 +3,6 @@ import { useGetProduct } from "../services/getProduct";
 import { createProduct } from "../services/createProduct";
 import { deleteProduct as deleteProductService } from "../services/removeProduct";
 import { updateProduct as updateProductService } from "../services/updateProduct";
-import { HTTP_STATUS } from "../../constants/constants";
 
 export const ProductContext = createContext();
 
@@ -17,8 +16,8 @@ export function ProductProvider({ children }) {
 
   const insertProduct = async (product) => {
     try {
-      const code = await createProduct(product);
-      if (code === 201) {
+      const response = await createProduct(product);
+      if (response) {
         const updatedProduct = await fetchProducts();
         setInitialProduct(updatedProduct);
       }
@@ -29,8 +28,8 @@ export function ProductProvider({ children }) {
 
   const updateProduct = async (updatedProduct) => {
     try {
-      const code = await updateProductService(updatedProduct);
-      if (code === 200) {
+      const response = await updateProductService(updatedProduct);
+      if (response) {
         const updatedProduct = await fetchProducts();
         setInitialProduct(updatedProduct);
       }
@@ -42,7 +41,7 @@ export function ProductProvider({ children }) {
   const deleteProduct = async (code) => {
     try {
       const response = await deleteProductService(code);
-      if (response === HTTP_STATUS.OK) {
+      if (response) {
         const updatedProduct = await fetchProducts();
         setInitialProduct(updatedProduct);
       }
@@ -62,8 +61,7 @@ export function ProductProvider({ children }) {
         insertProduct,
         updateProduct,
         deleteProduct
-      }}
-    >
+      }}>
       {children}
     </ProductContext.Provider>
   );

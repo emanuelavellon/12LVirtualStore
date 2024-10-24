@@ -11,7 +11,7 @@ export const createProduct= async (newProduct) => {
         });
     
         if (response.status === HTTP_STATUS.CREATED) {
-          return response.status;  
+          return true;  
         } else {
             throw new Error("Error inserting product");
         }

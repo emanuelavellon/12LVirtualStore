@@ -8,7 +8,7 @@
             });
 
             if (response.ok) {
-                return response.status;
+                return response.ok;
             } else {
                 throw new Error(`Error deleting product: ${response.statusText}`);
             }

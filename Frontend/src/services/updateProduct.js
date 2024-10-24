@@ -11,7 +11,7 @@ export const updateProduct = async (updatedProduct) => {
         });
 
         if (response.ok) { 
-            return response.status;
+            return true;
         } else {
             throw new Error(`Error updating product: ${response.statusText}`);
         }

@@ -37,11 +37,13 @@ export function NewProduct({ productToEdit = null, onClose }) {
 
         const { name, code, productType, tax, downloadLink } = formData;
 
-        const existingCodeProduct = products.find(product => product.code === code);
+        if(productToEdit == null){
+            const existingCodeProduct = products.find(product => product.code === code);
     
-        if (existingCodeProduct) {
-            alert(`Code: ${code} Already Exists. Specify another`);
-            return; 
+            if (existingCodeProduct) {
+                alert(`Code: ${code} Already Exists. Specify another`);
+                return; 
+            }
         }
 
         let productData = {

@@ -1,0 +1,36 @@
+@import 'color_palette';
+
+.container-modal{
+    width: 100%;
+}
+.productForm{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.container-modal .header {
+    background-color: color('--header-color');
+    color: color('background');
+    padding: 2px;
+    margin-bottom: 1rem;
+}
+
+.header h3{
+    margin: 5px;
+}
+
+.productForm input, select{
+    padding: 5px;
+}
+
+.productForm button{
+    background-color: color('secondary');
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.msg-validation{
+    color: color('gray-text');
+}

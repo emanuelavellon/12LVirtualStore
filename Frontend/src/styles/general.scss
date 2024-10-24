@@ -1,0 +1,12 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: color('background');
+}
+.container {
+    background-color: color('background');
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 10px color('--shadow');
+}

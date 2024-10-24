@@ -1,0 +1,31 @@
+@import 'color_palette';
+
+.btn {
+    width: auto;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.delete-warning{
+    margin: 0;
+}
+
+.product-item{
+    color: color('accent');
+    font-size: 1rem;
+}
+
+.btn-delete {
+    background-color: color('accent');
+    color: color('background');
+}
+
+.btn.btn-delete{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+}

@@ -1,0 +1,95 @@
+@import 'color_palette.scss';
+@import 'general.scss';
+
+.container table{
+    width: 100%;
+}
+div .header {
+    background-color: color('--header-color');
+    color: color('background');
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0;
+}
+div .header h2 {
+    margin: 0;
+}
+div .header div{
+    padding: 5px;
+}
+
+.btn {
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+}
+.action-icons{
+    display: flex;
+    justify-content: center;
+}
+.action-icons .btn {
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+}
+.action-icons .btn-delete {
+    background-color: color('accent');
+    color: color('background');
+}
+.btn-add {
+    margin-left: 5px;
+    background-color: color('secondary');
+    color: color('background');
+}
+
+.btn.btn-add{
+    display: flex;
+    align-items: center;
+}
+
+.btn-edit {
+    background-color: color('pink-rose');
+    color: color('background');
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    text-align: left;
+    border-bottom: 1px solid color('background');
+    border: 1px solid #ccc; 
+    padding: 8px; 
+}
+th {
+    background-color: color('background');
+}
+.action-icons {
+    display: flex;
+    gap: 10px;
+}
+.action-icons span {
+    cursor: pointer;
+}
+.pagination {
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px;
+    background-color: color('background');
+}
+.pagination button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    background-color: color('background');
+    cursor: pointer;
+}
+.pagination button.active {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    border-color: color('blue-light');
+}
+
+ 

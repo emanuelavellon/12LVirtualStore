@@ -1,0 +1,17 @@
+
+$colorPalette: (
+  'primary': #2E236C,
+  'secondary': #50B498,
+  'text': rgba(33, 33, 33, 0.8),
+  'background': #ecf0f1,
+  'accent': #EE4E4E,
+  'blue-light': #433D8B,
+  'pink-rose': #C8ACD6,
+  'gray-text': rgb(121, 120, 120),
+  '--header-color': #17153B,
+  '--shadow': rgba(0,0,0,0.1)
+);
+
+@function color($color-name) {
+    @return map-get($colorPalette, $color-name);
+}

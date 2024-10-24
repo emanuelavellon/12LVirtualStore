@@ -1,12 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import { ProductContext } from '../context/product';
+import React, { useEffect, useState } from 'react';
+import useProductPersistence from '../hooks/useProductPersistence';
 import { PRODUCT_TYPE } from '../../constants/constants';
 import '../styles/newProduct.scss';
 
 export function NewProduct({ productToEdit = null, onClose }) {
-    const { products, insertProduct, updateProduct } = useContext(ProductContext);
-    const prefix = productToEdit ? "Update" : "Create";
     const [formData, setFormData] = useState({
         name: productToEdit?.name || '',
         code: productToEdit?.code || '',
@@ -32,51 +29,13 @@ export function NewProduct({ productToEdit = null, onClose }) {
         setFormData(prevState => ({ ...prevState, [name]: value }));
     };
 
-    const handleAddProduct = (event) => {
-        event.preventDefault();
-
-        const { name, code, productType, tax, downloadLink } = formData;
-
-        if(productToEdit == null){
-            const existingCodeProduct = products.find(product => product.code === code);
-    
-            if (existingCodeProduct) {
-                alert(`Code: ${code} Already Exists. Specify another`);
-                return; 
-            }
-        }
-
-        let productData = {
-            name,
-            code,
-            productType
-        };
-
-        if (productType === PRODUCT_TYPE.MATERIAL) {
-            productData.tax = tax;
-            productData.downloadLink = ""; 
-        } else if (productType === PRODUCT_TYPE.DIGITAL) {
-            productData.downloadLink = downloadLink;
-            productData.tax = 0.00; 
-        } else {
-            throw new Error("Invalid product type");
-        }
-
-        if (!productToEdit) {
-            insertProduct(productData);
-        } else {
-            updateProduct(productData);
-        }
-
-        event.target.reset();
-        onClose();
-    };
+    const { handleAddProduct } = useProductPersistence(productToEdit, formData, onClose);
 
     return (
         <div className="container-modal">
             <br />
             <div className="header">
-                <h3>{`${prefix} Product:`}</h3>
+                <h3>{`${productToEdit ? "Update" : "Create"} Product:`}</h3>
             </div>
 
             <form className="productForm" onSubmit={handleAddProduct}>
@@ -151,27 +110,14 @@ export function NewProduct({ productToEdit = null, onClose }) {
                             value={formData.downloadLink}
                             placeholder='https://example.com'
                             autoComplete="off"
-                            onChange={handleChange}
-                        />
+                            onChange={handleChange}/>
                         <br />
                     </>
                 )}
-
-                <button type="submit">{prefix}</button>
+                <button type="submit">{productToEdit ? "Update" : "Create"}</button>
             </form>
         </div>
     );
 }
-
-NewProduct.propTypes = {
-    productToEdit: PropTypes.shape({
-        name: PropTypes.string,
-        code: PropTypes.string,
-        productType: PropTypes.string,
-        tax: PropTypes.number,
-        downloadLink: PropTypes.string,
-    }),
-    onClose: PropTypes.func.isRequired,
-};
 
 export default NewProduct;
